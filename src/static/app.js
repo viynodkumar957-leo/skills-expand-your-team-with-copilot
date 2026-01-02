@@ -554,16 +554,16 @@ document.addEventListener("DOMContentLoaded", () => {
       </div>
       <div class="social-share-container">
         <span class="share-label">Share:</span>
-        <button class="share-button facebook" data-activity="${name}" data-description="${details.description.replace(/"/g, '&quot;')}" title="Share on Facebook">
+        <button class="share-button facebook" title="Share on Facebook">
           <span class="share-icon">📘</span>
         </button>
-        <button class="share-button twitter" data-activity="${name}" data-description="${details.description.replace(/"/g, '&quot;')}" title="Share on Twitter">
+        <button class="share-button twitter" title="Share on Twitter">
           <span class="share-icon">🐦</span>
         </button>
-        <button class="share-button email" data-activity="${name}" data-description="${details.description.replace(/"/g, '&quot;')}" data-schedule="${formattedSchedule.replace(/"/g, '&quot;')}" title="Share via Email">
+        <button class="share-button email" title="Share via Email">
           <span class="share-icon">✉️</span>
         </button>
-        <button class="share-button copy-link" data-activity="${name}" title="Copy link to clipboard">
+        <button class="share-button copy-link" title="Copy link to clipboard">
           <span class="share-icon">🔗</span>
         </button>
       </div>
@@ -860,7 +860,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const url = encodeURIComponent(window.location.href);
     const text = encodeURIComponent(`Join ${activityName} at Mergington High School! ${activityDescription}`);
     const hashtags = 'MergingtonHighSchool,ExtracurricularActivities';
-    const twitterUrl = `https://twitter.com/intent/tweet?text=${text}&url=${url}&hashtags=${hashtags}`;
+    const twitterUrl = `https://x.com/intent/tweet?text=${text}&url=${url}&hashtags=${hashtags}`;
     window.open(twitterUrl, '_blank', 'width=600,height=400');
   }
 
@@ -897,6 +897,7 @@ document.addEventListener("DOMContentLoaded", () => {
     textArea.select();
     
     try {
+      // Note: document.execCommand('copy') is deprecated but kept as fallback for older browsers
       document.execCommand('copy');
       showMessage(`Link copied to clipboard! Share ${activityName} with your friends.`, 'success');
     } catch (err) {
